@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  background: linear-gradient(135deg, #cde8ff, #f0e6d2);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#confeti, #particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.invitacion {
+  background: rgba(255, 255, 255, 0.95);
+  width: 90%;
+  max-width: 650px;
+  padding: 50px 25px;
+  border-radius: 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  text-align: center;
+  line-height: 1.7;
+  border: 4px solid #ffd700;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Borde animado */
+.invitacion::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  border-radius: 32px;
+  background: linear-gradient(45deg, #0077b6, #ffd700, #0077b6, #ffd700);
+  background-size: 400% 400%;
+  padding: 4px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  animation: borderGlow 6s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderGlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Animaciones de texto */
+.encabezado h1 {
+  font-family: 'Great Vibes', cursive;
+  color: #0077b6;
+  font-size: 3em;
+  margin-bottom: 0.2em;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+.encabezado h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ffd700, #0077b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Texto con animación de aparición */
+.mensaje, .companeros, .invitacion-texto, .nota {
+  font-size: 1.1em;
+  color: #333;
+  margin: 20px 0;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 1s forwards;
+}
+
+.mensaje { animation-delay: 0.2s; }
+.companeros { animation-delay: 0.4s; }
+.invitacion-texto { animation-delay: 0.6s; }
+.detalles { animation-delay: 0.8s; }
+.nota { animation-delay: 1s; }
+
+@keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+
+/* Detalles y botones */
+.detalles p {
+  background: linear-gradient(90deg, #d9ecff, #fff8dc);
+  border-radius: 12px;
+  padding: 12px;
+  margin: 10px 0;
+  font-weight: 500;
+  border-left: 6px solid #ffd700;
+  transition: all 0.3s ease;
+}
+
+.detalles p:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.confirmar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-weight: bold;
+  border-radius: 50px;
+  text-decoration: none;
+  background: #25D366;
+  color: #fff;
+  padding: 15px 35px;
+  font-size: 1.2em;
+  margin-top: 30px;
+  animation: pulse 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.confirmar i { font-size: 1.3em; }
+
+.confirmar:hover {
+  background: #1ebe57;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+footer { margin-top:40px; color:#777; font-size:1em; }
+footer strong { color:#ffd700; }
+
+/* Reproductor flotante */
+#audio-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid #ffd700;
+  border-radius: 30px;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  font-weight: bold;
+  color: #0077b6;
+  font-size: 1em;
+}
+
+#audio-player button {
+  background: #0077b6;
+  color: #ffd700;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#audio-player button:hover {
+  transform: scale(1.1);
+}
+
+#audio-player i {
+  font-size: 1.1em;
+}
+
+@media screen and (max-width:480px){
+  .encabezado h1{ font-size:2.2em; }
+  .encabezado h2{ font-size:1.4em; }
+  .detalles p{ font-size:0.95em; }
+  .confirmar{ font-size:1em; padding:12px 25px; }
+  .invitacion{ padding:40px 20px; }
+}

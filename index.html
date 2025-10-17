@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Graduación - André Sebastián</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Confeti -->
+  <canvas id="confeti"></canvas>
+
+  <div class="invitacion">
+    <div class="encabezado">
+      <h1>🎓 Invitación a mi Graduación 🎓</h1>
+      <h2>André Sebastián Figueroa Barrios</h2>
+    </div>
+
+    <p class="mensaje">
+      Después de tanto esfuerzo, dedicación y crecimiento,  
+      siempre agarrado de la mano de Dios, estoy listo para el próximo capítulo.  
+      Será un honor contar con tu presencia en este día tan especial.
+    </p>
+
+    <p class="companeros">
+      En compañía de mis papás:<br>
+      <strong>Aarón Ramírez</strong> y <strong>Aidee Barrios</strong>
+    </p>
+
+    <p class="invitacion-texto">
+      Con gran orgullo y emoción te invito a la fiesta de mi graduación.
+    </p>
+
+    <div class="detalles">
+      <p><strong>📅 Fecha:</strong> Viernes 07 de noviembre de 2025</p>
+      <p><strong>📍 Lugar:</strong> 28 Av. 14-90, Colonia Ciudad de Plata II, Zona 7</p>
+      <p><strong>🕡 Hora:</strong> 18:30 P.M.</p>
+    </div>
+
+    <p class="nota">
+      Mi mejor regalo es tu presencia,  
+      pero si deseas tener un detalle conmigo, que sea en efectivo 💖
+    </p>
+
+    <a href="https://wa.me/50259627036?text=¡Hola%20André!%20Confirmo%20mi%20asistencia%20a%20tu%20graduación%20🎓" 
+       class="confirmar" target="_blank">
+      <i class="fab fa-whatsapp"></i> Confirmar asistencia
+    </a>
+
+    <footer>
+      <p>Con cariño, <strong>André Sebastián</strong></p>
+    </footer>
+  </div>
+
+  <!-- Reproductor de música flotante -->
+  <div id="audio-player">
+    <button id="play-pause">
+      <i class="fas fa-pause"></i>
+    </button>
+    <span>🎵 Música de graduación</span>
+  </div>
+
+  <audio id="music" loop autoplay>
+    <source src="audio.mp3" type="audio/mp3">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <!-- Scripts -->
+  <script src="confeti.js"></script>
+  <script>
+    const audio = document.getElementById('music');
+    const playBtn = document.getElementById('play-pause');
+    const icon = playBtn.querySelector('i');
+
+    // Intentar reproducir automáticamente al cargar
+    audio.play().catch(() => {
+      // Algunos navegadores requieren interacción del usuario
+      document.body.addEventListener('click', () => audio.play(), { once: true });
+    });
+
+    // Botón flotante toggle play/pause
+    playBtn.addEventListener('click', () => {
+      if(audio.paused){
+        audio.play();
+        icon.classList.remove('fa-play');
+        icon.classList.add('fa-pause');
+      } else {
+        audio.pause();
+        icon.classList.remove('fa-pause');
+        icon.classList.add('fa-play');
+      }
+    });
+  </script>
+
+</body>
+</html>
